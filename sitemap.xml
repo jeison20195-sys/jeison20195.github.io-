@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jeison20195-sys.github.io/jeison20195.github.io-/</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://jeison20195-sys.github.io/jeison20195.github.io-/</loc><lastmod>2026-03-20</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url></urlset>
 ```
 
----
-
-## Paso 5 — Guardar
-
-Busca el botón verde **"Commit changes"** abajo de la página → clic → confirma con otro **"Commit changes"** en el popup
+Lo puse todo en una sola línea para evitar el error de caracteres extra.
 
 ---
 
-## Paso 6 — Verificar que funcionó
+## Paso 4 — Guardar
 
-Espera 2 minutos y abre en tu navegador:
+**Commit changes** → **Commit changes**
+
+---
+
+## Paso 5 — Verificar
+
+Espera 2 minutos y recarga:
 ```
 https://jeison20195-sys.github.io/jeison20195.github.io-/sitemap.xml
