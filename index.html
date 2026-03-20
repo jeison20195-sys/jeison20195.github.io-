@@ -3,277 +3,570 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Discount Club VIP — Exclusive Deals & Codes</title>
+<title>The Discount Club VIP — Exclusive Deals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#0a0a0f;--surface:#13131a;--surface2:#1c1c27;
-    --border:rgba(255,255,255,0.07);--text:#f0eff5;--muted:#7a798a;
-    --gold:#f0c040;--gold2:#e6a800;--v2:#7f77dd;--v3:#1d9e75;
-    --v1:#ff6b35;--pink:#e0609a;--blue:#388bdb;--pur2:#a064ff;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 700px 400px at 15% 5%,rgba(127,119,221,0.12),transparent 70%),radial-gradient(ellipse 600px 500px at 90% 85%,rgba(240,192,64,0.12),transparent 70%);pointer-events:none;z-index:0;}
-  .noise{position:fixed;inset:0;opacity:0.025;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
-  .container{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:48px 20px 80px;}
-  .header{text-align:center;margin-bottom:44px;animation:fadeUp 0.6s ease both;}
-  .avatar-wrap{position:relative;display:inline-block;margin-bottom:18px;}
-  .avatar{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#1a1a2e,#2d2b55);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-direction:column;gap:1px;}
-  .avatar-crown{font-size:18px;line-height:1;}
-  .avatar-letters{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--gold);letter-spacing:0.04em;}
-  .avatar-ring{position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--gold),var(--v2),var(--gold2),var(--v2),var(--gold));animation:spin 5s linear infinite;z-index:0;}
-  .avatar-ring::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--bg);}
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .vip-label{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,rgba(240,192,64,0.15),rgba(230,168,0,0.08));border:1px solid rgba(240,192,64,0.3);border-radius:99px;padding:4px 14px;font-size:11px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
-  .brand-name{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px;line-height:1.2;}
-  .brand-name .vip{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .bio{color:var(--muted);font-size:13.5px;line-height:1.65;max-width:340px;margin:8px auto 18px;}
-  .socials{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
-  .social-pill{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:99px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:12px;font-weight:500;text-decoration:none;transition:all 0.2s;}
-  .social-pill:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-  .section-label{display:flex;align-items:center;gap:10px;margin:30px 0 12px;}
-  .section-label span{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
-  .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-  .card{display:flex;align-items:center;gap:15px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:16px;text-decoration:none;color:inherit;margin-bottom:10px;transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;animation:fadeUp 0.5s ease both;}
-  .card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.25s;border-radius:inherit;}
-  .card:hover{transform:translateY(-3px) scale(1.01);border-color:rgba(255,255,255,0.13);}
-  .card:hover::before{opacity:1;}
-  .card.gold::before{background:radial-gradient(ellipse at left,rgba(240,192,64,0.1),transparent 70%);}
-  .card.purple::before{background:radial-gradient(ellipse at left,rgba(127,119,221,0.1),transparent 70%);}
-  .card.pur2::before{background:radial-gradient(ellipse at left,rgba(160,100,255,0.1),transparent 70%);}
-  .card.orange::before{background:radial-gradient(ellipse at left,rgba(255,107,53,0.1),transparent 70%);}
-  .card.teal::before{background:radial-gradient(ellipse at left,rgba(29,158,117,0.1),transparent 70%);}
-  .card.pink::before{background:radial-gradient(ellipse at left,rgba(224,96,154,0.1),transparent 70%);}
-  .card.blue::before{background:radial-gradient(ellipse at left,rgba(56,139,219,0.1),transparent 70%);}
-  .card-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;position:relative;z-index:1;}
-  .card.gold .card-icon{background:rgba(240,192,64,0.12);}
-  .card.purple .card-icon{background:rgba(127,119,221,0.12);}
-  .card.pur2 .card-icon{background:rgba(160,100,255,0.12);}
-  .card.orange .card-icon{background:rgba(255,107,53,0.12);}
-  .card.teal .card-icon{background:rgba(29,158,117,0.12);}
-  .card.pink .card-icon{background:rgba(224,96,154,0.12);}
-  .card.blue .card-icon{background:rgba(56,139,219,0.12);}
-  .card-body{flex:1;min-width:0;position:relative;z-index:1;}
-  .card-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px;line-height:1.3;}
-  .card-sub{font-size:12px;color:var(--muted);line-height:1.45;}
-  .tag{display:inline-flex;align-items:center;gap:4px;border-radius:6px;padding:2px 7px;font-size:11px;font-weight:600;margin-top:5px;border:1px solid;}
-  .tg{background:rgba(240,192,64,0.1);border-color:rgba(240,192,64,0.25);color:var(--gold);}
-  .tv{background:rgba(127,119,221,0.1);border-color:rgba(127,119,221,0.25);color:var(--v2);}
-  .tv2{background:rgba(160,100,255,0.1);border-color:rgba(160,100,255,0.25);color:var(--pur2);}
-  .to{background:rgba(255,107,53,0.1);border-color:rgba(255,107,53,0.25);color:var(--v1);}
-  .tt{background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.25);color:var(--v3);}
-  .tp{background:rgba(224,96,154,0.1);border-color:rgba(224,96,154,0.25);color:var(--pink);}
-  .tb{background:rgba(56,139,219,0.1);border-color:rgba(56,139,219,0.25);color:var(--blue);}
-  .perks{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;}
-  .perk{font-size:10px;font-weight:600;font-family:'Syne',sans-serif;padding:2px 6px;border-radius:5px;}
-  .pg{background:rgba(29,158,117,0.12);color:var(--v3);}
-  .po{background:rgba(255,107,53,0.1);color:var(--v1);}
-  .card-right{display:flex;flex-direction:column;align-items:flex-end;gap:7px;flex-shrink:0;position:relative;z-index:1;}
-  .code-badge{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.04em;padding:5px 11px;border-radius:8px;border:1px dashed;cursor:pointer;transition:all 0.2s;white-space:nowrap;user-select:none;}
-  .card.gold .code-badge{border-color:var(--gold);color:var(--gold);}
-  .card.purple .code-badge{border-color:var(--v2);color:var(--v2);}
-  .card.pur2 .code-badge{border-color:var(--pur2);color:var(--pur2);}
-  .card.orange .code-badge{border-color:var(--v1);color:var(--v1);}
-  .card.teal .code-badge{border-color:var(--v3);color:var(--v3);}
-  .card.pink .code-badge{border-color:var(--pink);color:var(--pink);}
-  .card.blue .code-badge{border-color:var(--blue);color:var(--blue);}
-  .code-badge:hover{opacity:0.7;transform:scale(0.97);}
-  .arrow{color:var(--muted);font-size:15px;transition:transform 0.2s,color 0.2s;}
-  .card:hover .arrow{transform:translateX(4px);color:var(--text);}
-  .cb{position:absolute;top:-1px;right:16px;font-size:9.5px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:0.08em;padding:3px 9px;border-radius:0 0 8px 8px;text-transform:uppercase;}
-  .bv{background:var(--gold);color:#0a0a0f;}
-  .bh{background:var(--v1);color:#fff;}
-  .bn{background:var(--v3);color:#fff;}
-  .bd{background:var(--v2);color:#fff;}
-  .bg{background:var(--pink);color:#fff;}
-  .be{background:var(--pur2);color:#fff;}
-  .coming-soon{border:1px dashed rgba(255,255,255,0.1);border-radius:16px;padding:20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6;}
-  .coming-soon strong{display:block;font-family:'Syne',sans-serif;font-size:14px;color:var(--text);margin-bottom:4px;}
-  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--surface2);border:1px solid rgba(240,192,64,0.25);border-radius:14px;padding:11px 22px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:9px;z-index:100;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;}
-  .toast.show{transform:translateX(-50%) translateY(0);}
-  .footer{text-align:center;margin-top:48px;color:var(--muted);font-size:12px;line-height:1.9;}
-  .footer a{color:var(--v2);text-decoration:none;}
-  .fdiv{width:40px;height:1px;background:var(--border);margin:16px auto;}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-  .card:nth-child(1){animation-delay:0.04s}.card:nth-child(2){animation-delay:0.08s}
-  .card:nth-child(3){animation-delay:0.12s}.card:nth-child(4){animation-delay:0.16s}
-  .card:nth-child(5){animation-delay:0.20s}.card:nth-child(6){animation-delay:0.24s}
-  .card:nth-child(7){animation-delay:0.28s}.card:nth-child(8){animation-delay:0.32s}
-  .card:nth-child(9){animation-delay:0.36s}
-  @media(max-width:420px){.brand-name{font-size:20px}.card-title{font-size:13px}.container{padding:36px 16px 64px}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#06060a;
+  --s1:#0e0e16;
+  --s2:#161622;
+  --gold:#e8b84b;
+  --gold2:#f5d07a;
+  --gold3:#c49a2a;
+  --white:#f4f1eb;
+  --muted:#7a7870;
+  --border:rgba(232,184,75,0.12);
+  --borderl:rgba(232,184,75,0.25);
+  --v2:#8b83e6;
+  --v3:#2bb88a;
+  --v1:#f07040;
+  --pink:#d966a0;
+  --blue:#4a9de0;
+  --pur2:#b070ff;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── CANVAS PARTICLES ── */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ── AMBIENT GLOW ── */
+.amb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;}
+.amb1{width:600px;height:400px;top:-100px;left:-100px;background:rgba(232,184,75,0.07);}
+.amb2{width:500px;height:500px;bottom:-100px;right:-100px;background:rgba(139,131,230,0.07);}
+.amb3{width:400px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(232,184,75,0.04);}
+
+/* ── CONTAINER ── */
+.wrap{position:relative;z-index:1;max-width:580px;margin:0 auto;padding:60px 20px 100px;}
+
+/* ── HEADER ── */
+.header{text-align:center;margin-bottom:56px;animation:riseIn 0.8s cubic-bezier(0.16,1,0.3,1) both;}
+
+.crown-wrap{position:relative;display:inline-block;margin-bottom:24px;}
+
+.crown-bg{
+  width:96px;height:96px;border-radius:50%;
+  background:linear-gradient(145deg,#1a1810,#2a2418);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;flex-direction:column;gap:2px;
+  box-shadow:0 0 0 1px rgba(232,184,75,0.2), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.crown-emoji{font-size:28px;line-height:1;filter:drop-shadow(0 0 8px rgba(232,184,75,0.6));}
+.crown-text{font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;}
+
+.ring-outer{
+  position:absolute;inset:-5px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--gold3),var(--gold2),var(--gold),var(--gold2),var(--gold3),var(--gold3));
+  animation:spinRing 8s linear infinite;
+}
+.ring-outer::after{content:'';position:absolute;inset:4px;border-radius:50%;background:var(--bg);}
+
+.ring-inner{
+  position:absolute;inset:-2px;border-radius:50%;
+  background:conic-gradient(from 180deg,transparent 60%,rgba(232,184,75,0.4) 80%,transparent 100%);
+  animation:spinRing 4s linear infinite reverse;
+}
+
+@keyframes spinRing{to{transform:rotate(360deg);}}
+
+/* MEMBERS BADGE */
+.mbadge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(90deg,rgba(232,184,75,0.08),rgba(232,184,75,0.04));
+  border:1px solid var(--borderl);
+  border-radius:99px;padding:6px 18px;
+  font-size:10px;font-weight:600;letter-spacing:0.18em;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:16px;
+  box-shadow:0 0 20px rgba(232,184,75,0.08);
+}
+.mbadge::before,.mbadge::after{content:'✦';font-size:8px;opacity:0.6;}
+
+.brand{
+  font-family:'Playfair Display',serif;
+  font-size:34px;font-weight:900;
+  letter-spacing:-0.5px;line-height:1.1;
+  margin-bottom:6px;
+}
+.brand em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--gold2),var(--gold),var(--gold3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(232,184,75,0.3));
+}
+
+.tagline{
+  font-size:14px;font-weight:300;color:var(--muted);
+  line-height:1.7;max-width:320px;margin:10px auto 22px;
+  letter-spacing:0.01em;
+}
+
+.socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.spill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 16px;border-radius:99px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.03);
+  color:rgba(255,255,255,0.5);font-size:12px;font-weight:500;
+  text-decoration:none;transition:all 0.25s;
+  backdrop-filter:blur(4px);
+}
+.spill:hover{border-color:var(--borderl);color:var(--gold);background:rgba(232,184,75,0.06);transform:translateY(-2px);box-shadow:0 8px 20px rgba(232,184,75,0.1);}
+
+/* ── DIVIDER ── */
+.divider{
+  display:flex;align-items:center;gap:12px;
+  margin:36px 0 14px;
+}
+.divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);}
+.divider-label{
+  font-size:9px;font-weight:600;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+}
+
+/* ── CARD ── */
+.card{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;gap:16px;
+  padding:18px 20px;margin-bottom:12px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:18px;
+  text-decoration:none;color:inherit;
+  transition:all 0.3s cubic-bezier(0.34,1.2,0.64,1);
+  animation:riseIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+  cursor:pointer;
+}
+
+/* top shimmer line */
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--card-accent,rgba(232,184,75,0.3)),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+/* glow bg */
+.card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(ellipse at 0% 50%,var(--card-glow,rgba(232,184,75,0.06)),transparent 60%);
+  opacity:0;transition:opacity 0.3s;
+}
+
+.card:hover{
+  transform:translateY(-4px) scale(1.005);
+  border-color:rgba(255,255,255,0.12);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+}
+.card:hover::before,.card:hover::after{opacity:1;}
+
+/* color themes */
+.card.cgold{--card-accent:rgba(232,184,75,0.5);--card-glow:rgba(232,184,75,0.08);}
+.card.cv2  {--card-accent:rgba(139,131,230,0.5);--card-glow:rgba(139,131,230,0.08);}
+.card.cv3  {--card-accent:rgba(43,184,138,0.5); --card-glow:rgba(43,184,138,0.08);}
+.card.cv1  {--card-accent:rgba(240,112,64,0.5);  --card-glow:rgba(240,112,64,0.08);}
+.card.cpink{--card-accent:rgba(217,102,160,0.5);--card-glow:rgba(217,102,160,0.08);}
+.card.cblue{--card-accent:rgba(74,157,224,0.5); --card-glow:rgba(74,157,224,0.08);}
+.card.cpur2{--card-accent:rgba(176,112,255,0.5);--card-glow:rgba(176,112,255,0.08);}
+
+/* ICON */
+.icon-box{
+  width:54px;height:54px;flex-shrink:0;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:26px;
+  position:relative;z-index:1;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.06);
+  transition:transform 0.3s;
+}
+.card:hover .icon-box{transform:scale(1.05) rotate(-2deg);}
+.card.cgold .icon-box{background:rgba(232,184,75,0.08);border-color:rgba(232,184,75,0.15);}
+.card.cv2   .icon-box{background:rgba(139,131,230,0.08);border-color:rgba(139,131,230,0.15);}
+.card.cv3   .icon-box{background:rgba(43,184,138,0.08); border-color:rgba(43,184,138,0.15);}
+.card.cv1   .icon-box{background:rgba(240,112,64,0.08);  border-color:rgba(240,112,64,0.15);}
+.card.cpink .icon-box{background:rgba(217,102,160,0.08);border-color:rgba(217,102,160,0.15);}
+.card.cblue .icon-box{background:rgba(74,157,224,0.08); border-color:rgba(74,157,224,0.15);}
+.card.cpur2 .icon-box{background:rgba(176,112,255,0.08);border-color:rgba(176,112,255,0.15);}
+
+/* BODY */
+.cbody{flex:1;min-width:0;position:relative;z-index:1;}
+.ctitle{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;margin-bottom:4px;line-height:1.3;}
+.csub{font-size:12px;font-weight:300;color:var(--muted);line-height:1.5;}
+
+.perks{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
+.perk{
+  font-size:10px;font-weight:600;padding:2px 8px;border-radius:5px;
+  letter-spacing:0.03em;font-family:'Outfit',sans-serif;
+}
+.pk-g{background:rgba(43,184,138,0.12);color:#2bb88a;border:1px solid rgba(43,184,138,0.2);}
+.pk-o{background:rgba(240,112,64,0.1);color:#f07040;border:1px solid rgba(240,112,64,0.2);}
+
+.ctag{
+  display:inline-flex;align-items:center;gap:4px;
+  border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500;
+  margin-top:6px;border:1px solid;font-family:'Outfit',sans-serif;
+  letter-spacing:0.02em;
+}
+.tg{background:rgba(232,184,75,0.08); border-color:rgba(232,184,75,0.2); color:var(--gold);}
+.tv{background:rgba(139,131,230,0.08);border-color:rgba(139,131,230,0.2);color:var(--v2);}
+.tv3{background:rgba(43,184,138,0.08);border-color:rgba(43,184,138,0.2); color:var(--v3);}
+.tp{background:rgba(217,102,160,0.08);border-color:rgba(217,102,160,0.2);color:var(--pink);}
+.tb{background:rgba(74,157,224,0.08); border-color:rgba(74,157,224,0.2); color:var(--blue);}
+.tv2{background:rgba(176,112,255,0.08);border-color:rgba(176,112,255,0.2);color:var(--pur2);}
+
+/* RIGHT */
+.cright{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;position:relative;z-index:1;}
+
+.codebtn{
+  font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:0.06em;padding:6px 13px;border-radius:9px;
+  border:1px dashed;cursor:pointer;transition:all 0.2s;
+  white-space:nowrap;user-select:none;background:transparent;
+  position:relative;overflow:hidden;
+}
+.codebtn::before{
+  content:'';position:absolute;inset:0;opacity:0;
+  background:rgba(255,255,255,0.04);transition:opacity 0.2s;
+}
+.codebtn:hover::before{opacity:1;}
+.codebtn:hover{transform:scale(0.97);}
+.card.cgold .codebtn{border-color:rgba(232,184,75,0.4);color:var(--gold);}
+.card.cv2   .codebtn{border-color:rgba(139,131,230,0.4);color:var(--v2);}
+.card.cv3   .codebtn{border-color:rgba(43,184,138,0.4); color:var(--v3);}
+.card.cv1   .codebtn{border-color:rgba(240,112,64,0.4);  color:var(--v1);}
+.card.cpink .codebtn{border-color:rgba(217,102,160,0.4);color:var(--pink);}
+.card.cblue .codebtn{border-color:rgba(74,157,224,0.4); color:var(--blue);}
+.card.cpur2 .codebtn{border-color:rgba(176,112,255,0.4);color:var(--pur2);}
+
+.arr{color:rgba(255,255,255,0.2);font-size:14px;transition:transform 0.25s,color 0.25s;}
+.card:hover .arr{transform:translateX(5px);color:rgba(255,255,255,0.6);}
+
+/* CORNER BADGE */
+.cbadge{
+  position:absolute;top:-1px;right:18px;
+  font-size:9px;font-weight:700;font-family:'Outfit',sans-serif;
+  letter-spacing:0.1em;padding:4px 10px;border-radius:0 0 9px 9px;
+  text-transform:uppercase;
+}
+.bvip {background:linear-gradient(90deg,var(--gold3),var(--gold));color:#0a0800;}
+.bhot {background:linear-gradient(90deg,#d04020,var(--v1));color:#fff;}
+.bnew {background:linear-gradient(90deg,#1a9a6a,var(--v3));color:#fff;}
+.bdeal{background:linear-gradient(90deg,#6055c0,var(--v2));color:#fff;}
+.bglow{background:linear-gradient(90deg,#b04080,var(--pink));color:#fff;}
+.bpro {background:linear-gradient(90deg,#8020e0,var(--pur2));color:#fff;}
+
+/* COMING SOON */
+.soon{
+  border:1px dashed rgba(255,255,255,0.07);border-radius:18px;
+  padding:28px 20px;text-align:center;margin-bottom:12px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.015),rgba(255,255,255,0.005));
+}
+.soon-title{font-family:'Playfair Display',serif;font-size:16px;color:var(--white);margin-bottom:6px;}
+.soon-sub{font-size:13px;font-weight:300;color:var(--muted);}
+.soon-link{
+  display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+  padding:8px 20px;border-radius:99px;
+  background:linear-gradient(90deg,rgba(232,184,75,0.1),rgba(232,184,75,0.06));
+  border:1px solid var(--borderl);
+  color:var(--gold);font-size:12px;font-weight:600;
+  text-decoration:none;transition:all 0.25s;letter-spacing:0.04em;
+}
+.soon-link:hover{background:rgba(232,184,75,0.15);box-shadow:0 0 20px rgba(232,184,75,0.15);}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:32px;left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:linear-gradient(135deg,#1a1810,#141210);
+  border:1px solid var(--borderl);border-radius:16px;
+  padding:12px 24px;font-size:13px;font-weight:500;
+  display:flex;align-items:center;gap:10px;z-index:1000;
+  transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  white-space:nowrap;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(232,184,75,0.1),0 0 30px rgba(232,184,75,0.06);
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(232,184,75,0.6);flex-shrink:0;}
+
+/* FOOTER */
+.foot{text-align:center;margin-top:56px;color:var(--muted);font-size:12px;line-height:2;font-weight:300;}
+.foot a{color:var(--v2);text-decoration:none;}
+.foot-rule{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:20px auto;}
+.foot-brand{font-family:'Playfair Display',serif;font-size:13px;color:rgba(232,184,75,0.4);margin-top:8px;}
+
+@keyframes riseIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+.card:nth-child(1){animation-delay:0.05s}.card:nth-child(2){animation-delay:0.10s}
+.card:nth-child(3){animation-delay:0.15s}.card:nth-child(4){animation-delay:0.20s}
+.card:nth-child(5){animation-delay:0.25s}.card:nth-child(6){animation-delay:0.30s}
+.card:nth-child(7){animation-delay:0.35s}.card:nth-child(8){animation-delay:0.40s}
+.card:nth-child(9){animation-delay:0.45s}
+
+@media(max-width:430px){
+  .brand{font-size:27px;}
+  .ctitle{font-size:14px;}
+  .wrap{padding:44px 16px 80px;}
+  .icon-box{width:46px;height:46px;font-size:22px;}
+}
 </style>
 </head>
 <body>
-<div class="noise"></div>
-<div class="container">
 
+<canvas id="particles"></canvas>
+<div class="amb amb1"></div>
+<div class="amb amb2"></div>
+<div class="amb amb3"></div>
+
+<div class="wrap">
+
+  <!-- HEADER -->
   <div class="header">
-    <div class="avatar-wrap">
-      <div class="avatar-ring"></div>
-      <div class="avatar"><span class="avatar-crown">👑</span><span class="avatar-letters">VIP</span></div>
+    <div class="crown-wrap">
+      <div class="ring-outer"></div>
+      <div class="ring-inner"></div>
+      <div class="crown-bg">
+        <span class="crown-emoji">👑</span>
+        <span class="crown-text">VIP</span>
+      </div>
     </div>
-    <div class="vip-label">✦ Members-only deals ✦</div>
-    <h1 class="brand-name">The Discount Club <span class="vip">VIP</span></h1>
-    <p class="bio">Exclusive discount codes &amp; honest reviews.<br>All codes verified &amp; working — updated weekly. 💰</p>
+
+    <div class="mbadge">Members-only deals</div>
+
+    <h1 class="brand">The Discount Club <em>VIP</em></h1>
+
+    <p class="tagline">Exclusive codes. Honest reviews.<br>Verified weekly so you always save. 💰</p>
+
     <div class="socials">
-      <a class="social-pill" href="https://tiktok.com/@teddylong093" target="_blank">▶ TikTok</a>
-      <a class="social-pill" href="https://instagram.com/discountvipus" target="_blank">◈ Instagram</a>
-      <a class="social-pill" href="https://t.me/clubvipdescuentos" target="_blank">✈ Telegram</a>
+      <a class="spill" href="https://tiktok.com/@teddylong093" target="_blank">▶ TikTok</a>
+      <a class="spill" href="https://instagram.com/discountvipus" target="_blank">◈ Instagram</a>
+      <a class="spill" href="https://t.me/clubvipdescuentos" target="_blank">✈ Telegram</a>
     </div>
   </div>
 
-  <div class="section-label"><span>⚡ Electric Bikes — Tuttio Sport</span></div>
-
-  <a class="card orange" href="https://tuttiosport.com/?ref=xqlmzyqa" target="_blank">
-    <div class="cb bh">🔥 Hot</div>
-    <div class="card-icon">🏍️</div>
-    <div class="card-body">
-      <div class="card-title">Tuttio Electric Dirt Bike</div>
-      <div class="card-sub">40+ MPH · Conquer any terrain · No gas · No noise</div>
-      <div class="perks"><span class="perk pg">✓ Free Shipping</span><span class="perk po">✓ $10 OFF</span></div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'CASHBACK10')">CASHBACK10</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <a class="card teal" href="https://tuttiosport.com/?ref=xqlmzyqa" target="_blank">
-    <div class="cb bd">2-Yr Warranty</div>
-    <div class="card-icon">🚲</div>
-    <div class="card-body">
-      <div class="card-title">Tuttio Sport — E-Bike Revolution</div>
-      <div class="card-sub">Stop paying for gas · Fast &amp; sweat-free commute</div>
-      <div class="perks"><span class="perk pg">✓ Free Shipping</span><span class="perk pg">✓ No Tax*</span><span class="perk po">✓ $10 OFF</span></div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'CASHBACK10')">CASHBACK10</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <div class="section-label"><span>🌿 Health &amp; Supplements — Micro Ingredients</span></div>
-
-  <a class="card gold" href="https://www.microingredients.com/?sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
-    <div class="cb bv">👑 VIP Deal</div>
-    <div class="card-icon">🌿</div>
-    <div class="card-body">
-      <div class="card-title">Micro Ingredients — Full Store</div>
-      <div class="card-sub">Premium supplements · All products included</div>
-      <div class="tag tg">💰 15% OFF everything</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'NATURE15%')">NATURE15%</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <a class="card blue" href="https://www.microingredients.com/products/vitamin-d3-k2-softgels?_pos=2&_sid=517f3092d&_ss=r&sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
-    <div class="card-icon">☀️</div>
-    <div class="card-body">
-      <div class="card-title">Vitamin D3 + K2 Softgels</div>
-      <div class="card-sub">Coconut oil formula · Immune &amp; bone support</div>
-      <div class="tag tb">💊 15% OFF · High potency</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'NATURE15%')">NATURE15%</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <a class="card pink" href="https://www.microingredients.com/products/micro-ingredients-organic-collagen-peptides-powder-8oz?_pos=1&_sid=6f1f98a16&_ss=r&sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
-    <div class="cb bg">✨ Glow Up</div>
-    <div class="card-icon">💅</div>
-    <div class="card-body">
-      <div class="card-title">Multi Collagen Peptides</div>
-      <div class="card-sub">Hair, skin, nails &amp; joints · Dissolves in coffee</div>
-      <div class="tag tp">✨ 15% OFF · Radiant skin</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'NATURE15%')">NATURE15%</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <div class="section-label"><span>🎮 Tech &amp; Gaming — MelGeek</span></div>
-
-  <a class="card purple" href="https://www.melgeek.com/products/real67-magnetic-keyboard?ref=gfub8jt0" target="_blank">
-    <div class="cb bn">New</div>
-    <div class="card-icon">⌨️</div>
-    <div class="card-body">
-      <div class="card-title">MelGeek REAL67/81 Keyboard</div>
-      <div class="card-sub">Magnetic switches · Gaming &amp; productivity</div>
-      <div class="tag tv">💜 5% OFF</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'08OFF')">08OFF</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <a class="card pur2" href="https://www.melgeek.com/products/melgeek-made68-ultra-hall-effect-keyboard?ref=gfub8jt0" target="_blank">
-    <div class="cb be">🎯 Esports</div>
-    <div class="card-icon">🕹️</div>
-    <div class="card-body">
-      <div class="card-title">MelGeek MADE68 Ultra+</div>
-      <div class="card-sub">0.01mm Rapid Trigger · Built for Valorant &amp; CS2</div>
-      <div class="tag tv2">⚡ 5% OFF · Pro accuracy</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'08OFF')">08OFF</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <a class="card teal" href="https://www.melgeek.com/collections/accessory?ref=gfub8jt0" target="_blank">
-    <div class="card-icon">🖱️</div>
-    <div class="card-body">
-      <div class="card-title">MelGeek Accessories</div>
-      <div class="card-sub">Keycaps, coiled cables &amp; wrist rests · Complete your setup</div>
-      <div class="tag tt">🎨 5% OFF · Full collection</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event,'08OFF')">08OFF</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <div class="section-label"><span>⚡ More Deals Coming</span></div>
-  <div class="coming-soon">
-    <strong>New exclusive codes dropping soon 🔥</strong>
-    Join the Telegram to get notified first — before anyone else
+  <!-- ⚡ E-BIKES -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">⚡ Electric Bikes — Tuttio Sport</div>
+    <div class="divider-line"></div>
   </div>
 
-  <div class="footer">
-    <div class="fdiv"></div>
-    <p>👆 Tap any code to copy · Paste at checkout to save</p>
-    <p style="margin-top:6px;"><a href="https://t.me/clubvipdescuentos" target="_blank">📢 Join Telegram for early access to new deals</a></p>
-    <p style="margin-top:12px;font-size:11px;opacity:0.55;">Affiliate links — I earn a small commission at no extra cost to you.<br>The Discount Club VIP — Only the best, always verified.</p>
+  <a class="card cv1" href="https://tuttiosport.com/?ref=xqlmzyqa" target="_blank">
+    <div class="cbadge bhot">🔥 Hot Deal</div>
+    <div class="icon-box">🏍️</div>
+    <div class="cbody">
+      <div class="ctitle">Tuttio Electric Dirt Bike</div>
+      <div class="csub">40+ MPH · Conquer any terrain · Zero gas · Zero noise</div>
+      <div class="perks"><span class="perk pk-g">✓ Free Shipping</span><span class="perk pk-o">✓ $10 OFF</span></div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'CASHBACK10')">CASHBACK10</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <a class="card cv3" href="https://tuttiosport.com/?ref=xqlmzyqa" target="_blank">
+    <div class="cbadge bdeal">2-Yr Warranty</div>
+    <div class="icon-box">🚲</div>
+    <div class="cbody">
+      <div class="ctitle">Tuttio Sport — E-Bike Revolution</div>
+      <div class="csub">Stop paying for gas · Fast &amp; sweat-free commute</div>
+      <div class="perks"><span class="perk pk-g">✓ Free Shipping</span><span class="perk pk-g">✓ No Tax*</span><span class="perk pk-o">✓ $10 OFF</span></div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'CASHBACK10')">CASHBACK10</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <!-- 🌿 SUPPLEMENTS -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">🌿 Health &amp; Supplements — Micro Ingredients</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <a class="card cgold" href="https://www.microingredients.com/?sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
+    <div class="cbadge bvip">👑 VIP Deal</div>
+    <div class="icon-box">🌿</div>
+    <div class="cbody">
+      <div class="ctitle">Micro Ingredients — Full Store</div>
+      <div class="csub">Premium quality supplements · Every product included</div>
+      <div class="ctag tg">💰 15% OFF storewide</div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'NATURE15%')">NATURE15%</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <a class="card cblue" href="https://www.microingredients.com/products/vitamin-d3-k2-softgels?_pos=2&_sid=517f3092d&_ss=r&sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
+    <div class="icon-box">☀️</div>
+    <div class="cbody">
+      <div class="ctitle">Vitamin D3 + K2 Softgels</div>
+      <div class="csub">Coconut oil formula · Immune &amp; bone support · High potency</div>
+      <div class="ctag tb">💊 15% OFF · Stock up &amp; save</div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'NATURE15%')">NATURE15%</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <a class="card cpink" href="https://www.microingredients.com/products/micro-ingredients-organic-collagen-peptides-powder-8oz?_pos=1&_sid=6f1f98a16&_ss=r&sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
+    <div class="cbadge bglow">✨ Glow Up</div>
+    <div class="icon-box">💅</div>
+    <div class="cbody">
+      <div class="ctitle">Multi Collagen Peptides</div>
+      <div class="csub">Hair, skin, nails &amp; joints · Dissolves in coffee or smoothies</div>
+      <div class="ctag tp">✨ 15% OFF · Radiant skin</div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'NATURE15%')">NATURE15%</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <!-- 🎮 GAMING -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">🎮 Tech &amp; Gaming — MelGeek</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <a class="card cv2" href="https://www.melgeek.com/products/real67-magnetic-keyboard?ref=gfub8jt0" target="_blank">
+    <div class="cbadge bnew">New</div>
+    <div class="icon-box">⌨️</div>
+    <div class="cbody">
+      <div class="ctitle">MelGeek REAL67/81 Keyboard</div>
+      <div class="csub">Magnetic switches · Gaming &amp; productivity</div>
+      <div class="ctag tv">💜 5% OFF</div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'08OFF')">08OFF</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <a class="card cpur2" href="https://www.melgeek.com/products/melgeek-made68-ultra-hall-effect-keyboard?ref=gfub8jt0" target="_blank">
+    <div class="cbadge bpro">🎯 Esports</div>
+    <div class="icon-box">🕹️</div>
+    <div class="cbody">
+      <div class="ctitle">MelGeek MADE68 Ultra+</div>
+      <div class="csub">0.01mm Rapid Trigger · Built for Valorant &amp; CS2 pros</div>
+      <div class="ctag tv2">⚡ 5% OFF · Pro-level accuracy</div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'08OFF')">08OFF</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <a class="card cv3" href="https://www.melgeek.com/collections/accessory?ref=gfub8jt0" target="_blank">
+    <div class="icon-box">🖱️</div>
+    <div class="cbody">
+      <div class="ctitle">MelGeek Accessories</div>
+      <div class="csub">Keycaps, coiled cables &amp; wrist rests · Complete your dream setup</div>
+      <div class="ctag tv3">🎨 5% OFF · Full collection</div>
+    </div>
+    <div class="cright">
+      <button class="codebtn" onclick="copyCode(event,'08OFF')">08OFF</button>
+      <span class="arr">→</span>
+    </div>
+  </a>
+
+  <!-- COMING SOON -->
+  <div class="divider" style="margin-top:36px;">
+    <div class="divider-line"></div>
+    <div class="divider-label">✦ More Deals Coming</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="soon">
+    <div class="soon-title">New exclusive codes dropping soon 🔥</div>
+    <div class="soon-sub">Join the Telegram to get notified first — members always get early access</div>
+    <a class="soon-link" href="https://t.me/clubvipdescuentos" target="_blank">✈ Join Telegram Club</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-rule"></div>
+    <p>👆 Tap any code to copy instantly · Paste at checkout</p>
+    <p style="margin-top:4px;font-size:11px;opacity:0.5;">Affiliate links — small commission at no extra cost to you.<br>Only verified, working codes. Always.</p>
+    <div class="foot-brand">The Discount Club VIP</div>
   </div>
 </div>
 
-<div class="toast" id="toast"><span>✓</span><span id="toast-text">Code copied!</span></div>
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-dot"></span>
+  <span id="toast-msg">Code copied!</span>
+</div>
 
 <script>
+/* ── PARTICLES ── */
+(function(){
+  var c=document.getElementById('particles');
+  var ctx=c.getContext('2d');
+  var W,H,pts=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  for(var i=0;i<55;i++){
+    pts.push({
+      x:Math.random()*1400,y:Math.random()*900,
+      vx:(Math.random()-0.5)*0.18,vy:(Math.random()-0.5)*0.18,
+      r:Math.random()*1.2+0.3,
+      a:Math.random()*0.4+0.1,
+      gold:Math.random()>0.5
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(function(p){
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.gold?'rgba(232,184,75,'+p.a+')':'rgba(139,131,230,'+p.a*0.6+')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── COPY CODE ── */
 function copyCode(e,code){
   e.preventDefault();e.stopPropagation();
   navigator.clipboard.writeText(code).catch(function(){
-    var ta=document.createElement('textarea');ta.value=code;
-    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    var t=document.createElement('textarea');t.value=code;
+    document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);
   });
   var btn=e.currentTarget,prev=btn.textContent;
   btn.textContent='✓ Copied!';
-  setTimeout(function(){btn.textContent=prev;},2200);
-  showToast('Code "'+code+'" copied! Paste at checkout 🛒');
+  setTimeout(function(){btn.textContent=prev;},2000);
+  var toast=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent='"'+code+'" copied — paste at checkout 🛒';
+  toast.classList.add('show');
+  setTimeout(function(){toast.classList.remove('show');},2800);
 }
-function showToast(msg){
-  var t=document.getElementById('toast');
-  document.getElementById('toast-text').textContent=msg;
-  t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},2800);
-}
+
+/* Card clicks navigate to href */
+document.querySelectorAll('.card').forEach(function(card){
+  card.addEventListener('click',function(e){
+    if(e.target.classList.contains('codebtn'))return;
+    window.open(card.href,'_blank');
+  });
+});
 </script>
 </body>
 </html>
