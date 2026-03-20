@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Deals — Top Picks & Exclusive Codes</title>
+<title>The Discount Club VIP — Exclusive Deals & Codes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -14,12 +14,13 @@
     --border: rgba(255,255,255,0.07);
     --text: #f0eff5;
     --muted: #7a798a;
-    --accent1: #ff6b35;
+    --gold: #f0c040;
+    --gold2: #e6a800;
     --accent2: #7f77dd;
     --accent3: #1d9e75;
-    --accent4: #f0c040;
-    --glow1: rgba(255,107,53,0.15);
-    --glow2: rgba(127,119,221,0.15);
+    --accent1: #ff6b35;
+    --glow-gold: rgba(240,192,64,0.12);
+    --glow-purple: rgba(127,119,221,0.12);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,14 +33,13 @@
     overflow-x: hidden;
   }
 
-  /* Animated background */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 600px 400px at 20% 10%, var(--glow2), transparent 70%),
-      radial-gradient(ellipse 500px 400px at 85% 80%, var(--glow1), transparent 70%);
+      radial-gradient(ellipse 700px 400px at 15% 5%, var(--glow-purple), transparent 70%),
+      radial-gradient(ellipse 600px 500px at 90% 85%, var(--glow-gold), transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -62,41 +62,48 @@
     padding: 48px 20px 80px;
   }
 
-  /* ── HEADER ── */
+  /* HEADER */
   .header {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 44px;
     animation: fadeUp 0.6s ease both;
   }
 
   .avatar-wrap {
     position: relative;
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .avatar {
-    width: 80px;
-    height: 80px;
+    width: 84px;
+    height: 84px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent2), var(--accent1));
+    background: linear-gradient(135deg, #1a1a2e, #2d2b55);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: white;
     position: relative;
     z-index: 1;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .avatar-crown { font-size: 18px; line-height: 1; }
+  .avatar-letters {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 0.04em;
   }
 
   .avatar-ring {
     position: absolute;
     inset: -4px;
     border-radius: 50%;
-    background: conic-gradient(var(--accent1), var(--accent2), var(--accent3), var(--accent1));
-    animation: spin 4s linear infinite;
+    background: conic-gradient(var(--gold), var(--accent2), var(--gold2), var(--accent2), var(--gold));
+    animation: spin 5s linear infinite;
     z-index: 0;
   }
 
@@ -110,27 +117,50 @@
 
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .handle {
+  .vip-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(90deg, rgba(240,192,64,0.15), rgba(230,168,0,0.08));
+    border: 1px solid rgba(240,192,64,0.3);
+    border-radius: 99px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 700;
     font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
   }
 
-  .handle span { color: var(--accent1); }
+  .brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .brand-name .vip {
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
   .bio {
     color: var(--muted);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13.5px;
+    line-height: 1.65;
     max-width: 340px;
-    margin: 0 auto 16px;
+    margin: 8px auto 18px;
   }
 
   .socials {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
     flex-wrap: wrap;
   }
@@ -139,7 +169,7 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 99px;
     border: 1px solid var(--border);
     background: var(--surface);
@@ -148,31 +178,30 @@
     font-weight: 500;
     text-decoration: none;
     transition: all 0.2s;
-    cursor: pointer;
   }
 
   .social-pill:hover {
-    border-color: var(--accent2);
-    color: var(--text);
-    transform: translateY(-1px);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
   }
 
-  /* ── SECTION LABEL ── */
+  /* SECTION LABEL */
   .section-label {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 32px 0 14px;
-    animation: fadeUp 0.6s ease both;
+    margin: 32px 0 12px;
   }
 
   .section-label span {
     font-family: 'Syne', sans-serif;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
+    white-space: nowrap;
   }
 
   .section-label::after {
@@ -182,11 +211,11 @@
     background: var(--border);
   }
 
-  /* ── PRODUCT CARD ── */
+  /* PRODUCT CARD */
   .card {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 15px;
     padding: 16px 18px;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -209,66 +238,67 @@
     border-radius: inherit;
   }
 
-  .card:hover {
-    transform: translateY(-3px) scale(1.01);
-    border-color: rgba(255,255,255,0.14);
-  }
-
+  .card:hover { transform: translateY(-3px) scale(1.01); border-color: rgba(255,255,255,0.13); }
   .card:hover::before { opacity: 1; }
 
-  .card.orange::before  { background: radial-gradient(ellipse at left, rgba(255,107,53,0.08), transparent 70%); }
-  .card.purple::before  { background: radial-gradient(ellipse at left, rgba(127,119,221,0.1), transparent 70%); }
-  .card.teal::before    { background: radial-gradient(ellipse at left, rgba(29,158,117,0.1), transparent 70%); }
-  .card.yellow::before  { background: radial-gradient(ellipse at left, rgba(240,192,64,0.1), transparent 70%); }
-  .card.pink::before    { background: radial-gradient(ellipse at left, rgba(220,80,140,0.1), transparent 70%); }
+  .card.gold::before   { background: radial-gradient(ellipse at left, rgba(240,192,64,0.1), transparent 70%); }
+  .card.purple::before { background: radial-gradient(ellipse at left, rgba(127,119,221,0.1), transparent 70%); }
+  .card.teal::before   { background: radial-gradient(ellipse at left, rgba(29,158,117,0.1), transparent 70%); }
 
   .card-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 50px;
+    height: 50px;
+    border-radius: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 24px;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
   }
 
-  .card.orange .card-icon  { background: rgba(255,107,53,0.15); }
-  .card.purple .card-icon  { background: rgba(127,119,221,0.15); }
-  .card.teal   .card-icon  { background: rgba(29,158,117,0.15); }
-  .card.yellow .card-icon  { background: rgba(240,192,64,0.15); }
-  .card.pink   .card-icon  { background: rgba(220,80,140,0.15); }
+  .card.gold   .card-icon { background: rgba(240,192,64,0.12); }
+  .card.purple .card-icon { background: rgba(127,119,221,0.12); }
+  .card.teal   .card-icon { background: rgba(29,158,117,0.12); }
 
-  .card-body {
-    flex: 1;
-    min-width: 0;
-    position: relative;
-    z-index: 1;
-  }
+  .card-body { flex: 1; min-width: 0; position: relative; z-index: 1; }
 
   .card-title {
     font-family: 'Syne', sans-serif;
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 700;
     margin-bottom: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.3;
   }
 
-  .card-sub {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.4;
+  .card-sub { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  .discount-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(240,192,64,0.1);
+    border: 1px solid rgba(240,192,64,0.2);
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 5px;
+  }
+
+  .discount-tag.purple {
+    background: rgba(127,119,221,0.1);
+    border-color: rgba(127,119,221,0.2);
+    color: var(--accent2);
   }
 
   .card-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 6px;
+    gap: 7px;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
@@ -278,102 +308,107 @@
     font-family: 'Syne', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 4px 10px;
+    letter-spacing: 0.04em;
+    padding: 5px 11px;
     border-radius: 8px;
     border: 1px dashed;
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
+    user-select: none;
   }
 
-  .card.orange .code-badge  { border-color: var(--accent1); color: var(--accent1); }
-  .card.purple .code-badge  { border-color: var(--accent2); color: var(--accent2); }
-  .card.teal   .code-badge  { border-color: var(--accent3); color: var(--accent3); }
-  .card.yellow .code-badge  { border-color: var(--accent4); color: var(--accent4); }
-  .card.pink   .code-badge  { border-color: #dc508c; color: #dc508c; }
+  .card.gold   .code-badge { border-color: var(--gold);    color: var(--gold); }
+  .card.purple .code-badge { border-color: var(--accent2); color: var(--accent2); }
+  .card.teal   .code-badge { border-color: var(--accent3); color: var(--accent3); }
 
-  .code-badge:hover { opacity: 0.75; transform: scale(0.97); }
-  .code-badge.copied { opacity: 0.5; }
+  .code-badge:hover { opacity: 0.7; transform: scale(0.97); }
 
-  .arrow {
-    color: var(--muted);
-    font-size: 16px;
-    transition: transform 0.2s, color 0.2s;
-  }
+  .arrow { color: var(--muted); font-size: 15px; transition: transform 0.2s, color 0.2s; }
+  .card:hover .arrow { transform: translateX(4px); color: var(--text); }
 
-  .card:hover .arrow {
-    transform: translateX(3px);
-    color: var(--text);
-  }
-
-  /* ── HOT DEAL BADGE ── */
-  .hot-badge {
+  .corner-badge {
     position: absolute;
     top: -1px;
     right: 16px;
-    background: var(--accent1);
-    color: white;
-    font-size: 9px;
+    font-size: 9.5px;
     font-weight: 700;
     font-family: 'Syne', sans-serif;
-    letter-spacing: 0.1em;
-    padding: 3px 8px;
+    letter-spacing: 0.08em;
+    padding: 3px 9px;
     border-radius: 0 0 8px 8px;
     text-transform: uppercase;
   }
 
-  /* ── TOAST ── */
+  .badge-vip { background: var(--gold); color: #0a0a0f; }
+  .badge-new { background: var(--accent3); color: white; }
+
+  /* COMING SOON */
+  .coming-soon {
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .coming-soon strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  /* TOAST */
   .toast {
     position: fixed;
     bottom: 28px;
     left: 50%;
-    transform: translateX(-50%) translateY(80px);
+    transform: translateX(-50%) translateY(90px);
     background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 20px;
+    border: 1px solid rgba(240,192,64,0.25);
+    border-radius: 14px;
+    padding: 11px 22px;
     font-size: 13px;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     z-index: 100;
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     white-space: nowrap;
   }
 
   .toast.show { transform: translateX(-50%) translateY(0); }
-  .toast-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent3); }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   .footer {
     text-align: center;
     margin-top: 48px;
     color: var(--muted);
     font-size: 12px;
-    line-height: 1.8;
-    animation: fadeUp 0.6s ease 0.8s both;
+    line-height: 1.9;
   }
 
   .footer a { color: var(--accent2); text-decoration: none; }
+  .footer-divider { width: 40px; height: 1px; background: var(--border); margin: 16px auto; }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .card:nth-child(1) { animation-delay: 0.1s; }
-  .card:nth-child(2) { animation-delay: 0.15s; }
-  .card:nth-child(3) { animation-delay: 0.2s; }
-  .card:nth-child(4) { animation-delay: 0.25s; }
-  .card:nth-child(5) { animation-delay: 0.3s; }
-  .card:nth-child(6) { animation-delay: 0.35s; }
+  .card:nth-child(1) { animation-delay: 0.08s; }
+  .card:nth-child(2) { animation-delay: 0.16s; }
+  .card:nth-child(3) { animation-delay: 0.24s; }
 
-  /* Mobile tweaks */
   @media (max-width: 420px) {
-    .card-title { font-size: 14px; }
-    .handle { font-size: 19px; }
+    .brand-name { font-size: 20px; }
+    .card-title { font-size: 13.5px; }
+    .container { padding: 36px 16px 64px; }
   }
 </style>
 </head>
@@ -387,115 +422,80 @@
   <div class="header">
     <div class="avatar-wrap">
       <div class="avatar-ring"></div>
-      <div class="avatar">YN</div>
+      <div class="avatar">
+        <span class="avatar-crown">👑</span>
+        <span class="avatar-letters">VIP</span>
+      </div>
     </div>
-    <h1 class="handle">Your<span>Name</span></h1>
+
+    <div class="vip-label">✦ Members-only deals ✦</div>
+
+    <h1 class="brand-name">The Discount Club <span class="vip">VIP</span></h1>
+
     <p class="bio">
-      Best deals, honest reviews &amp; exclusive discount codes.<br>
-      Updated weekly — save big on every purchase. 🔥
+      Exclusive discount codes &amp; honest reviews.<br>
+      All codes verified &amp; working — updated weekly. 💰
     </p>
+
     <div class="socials">
-      <a class="social-pill" href="https://tiktok.com/@TUUSUARIO" target="_blank">
-        ▶ TikTok
-      </a>
-      <a class="social-pill" href="https://instagram.com/TUUSUARIO" target="_blank">
-        ◈ Instagram
-      </a>
-      <a class="social-pill" href="https://youtube.com/@TUUSUARIO" target="_blank">
-        ▷ YouTube
-      </a>
+      <a class="social-pill" href="https://tiktok.com/@teddylong093" target="_blank">▶ TikTok</a>
+      <a class="social-pill" href="https://instagram.com/discountvipus" target="_blank">◈ Instagram</a>
+      <a class="social-pill" href="https://t.me/clubvipdescuentos" target="_blank">✈ Telegram</a>
     </div>
   </div>
 
-  <!-- SECTION: MOBILITY -->
-  <div class="section-label"><span>⚡ Electric Mobility</span></div>
+  <!-- HEALTH & SUPPLEMENTS -->
+  <div class="section-label"><span>🌿 Health &amp; Supplements</span></div>
 
-  <a class="card orange" href="https://TU-LINK-AFILIADO-1.com" target="_blank">
-    <div class="hot-badge">🔥 Hot</div>
-    <div class="card-icon">🏍️</div>
+  <a class="card gold" href="https://www.microingredients.com/?sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
+    <div class="corner-badge badge-vip">👑 VIP Deal</div>
+    <div class="card-icon">🌿</div>
     <div class="card-body">
-      <div class="card-title">Tuttio E-Bike Dirt</div>
-      <div class="card-sub">45mph · 60mi range · Free shipping</div>
+      <div class="card-title">Micro Ingredients</div>
+      <div class="card-sub">Premium supplements · Storewide discount</div>
+      <div class="discount-tag">💰 15% OFF everything</div>
     </div>
     <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event, 'CASHBACK10')">CASHBACK10</span>
+      <span class="code-badge" onclick="copyCode(event, 'NATURE15%')">NATURE15%</span>
       <span class="arrow">→</span>
     </div>
   </a>
 
-  <a class="card purple" href="https://TU-LINK-AFILIADO-2.com" target="_blank">
-    <div class="card-icon">🛴</div>
+  <!-- TECH & GAMING -->
+  <div class="section-label"><span>🎮 Tech &amp; Gaming</span></div>
+
+  <a class="card purple" href="https://www.melgeek.com/products/real67-magnetic-keyboard?ref=gfub8jt0" target="_blank">
+    <div class="corner-badge badge-new">New</div>
+    <div class="card-icon">⌨️</div>
     <div class="card-body">
-      <div class="card-title">Electric Scooter X2</div>
-      <div class="card-sub">Urban commuting · Long battery life</div>
+      <div class="card-title">MelGeek REAL67/81 Keyboard</div>
+      <div class="card-sub">Magnetic switches · Gaming &amp; productivity</div>
+      <div class="discount-tag purple">💜 5% OFF</div>
     </div>
     <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event, 'SAVE15')">SAVE15</span>
+      <span class="code-badge" onclick="copyCode(event, '08OFF')">08OFF</span>
       <span class="arrow">→</span>
     </div>
   </a>
 
-  <!-- SECTION: TECH -->
-  <div class="section-label"><span>📱 Tech & Gadgets</span></div>
+  <!-- COMING SOON -->
+  <div class="section-label"><span>⚡ More Deals Coming</span></div>
 
-  <a class="card teal" href="https://TU-LINK-AFILIADO-3.com" target="_blank">
-    <div class="card-icon">📸</div>
-    <div class="card-body">
-      <div class="card-title">Action Camera 4K</div>
-      <div class="card-sub">Waterproof · Stabilized · Under $200</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event, 'CAM20')">CAM20</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <a class="card yellow" href="https://TU-LINK-AFILIADO-4.com" target="_blank">
-    <div class="card-icon">☀️</div>
-    <div class="card-body">
-      <div class="card-title">Solar Portable Charger</div>
-      <div class="card-sub">Charge anywhere · Eco-friendly</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event, 'SOLAR20')">SOLAR20</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <!-- SECTION: FITNESS -->
-  <div class="section-label"><span>💪 Fitness & Health</span></div>
-
-  <a class="card pink" href="https://TU-LINK-AFILIADO-5.com" target="_blank">
-    <div class="hot-badge">New</div>
-    <div class="card-icon">🥤</div>
-    <div class="card-body">
-      <div class="card-title">Protein Supplement</div>
-      <div class="card-sub">20% off — Best seller 2025</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event, 'FIT15')">FIT15</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
-
-  <a class="card teal" href="https://TU-LINK-AFILIADO-6.com" target="_blank">
-    <div class="card-icon">🧘</div>
-    <div class="card-body">
-      <div class="card-title">Premium Yoga Mat</div>
-      <div class="card-sub">Non-slip · Extra thick · Carry strap</div>
-    </div>
-    <div class="card-right">
-      <span class="code-badge" onclick="copyCode(event, 'YOGA10')">YOGA10</span>
-      <span class="arrow">→</span>
-    </div>
-  </a>
+  <div class="coming-soon">
+    <strong>New exclusive codes dropping soon 🔥</strong>
+    Join the Telegram to get notified first — before anyone else
+  </div>
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>Tap a code to copy it · Then paste at checkout 💸</p>
-    <p style="margin-top:8px; font-size:11px;">
+    <div class="footer-divider"></div>
+    <p>👆 Tap any code to copy · Paste at checkout to save</p>
+    <p style="margin-top:6px;">
+      <a href="https://t.me/clubvipdescuentos" target="_blank">📢 Join Telegram for early access to new deals</a>
+    </p>
+    <p style="margin-top:12px; font-size:11px; opacity:0.55;">
       Affiliate links — I earn a small commission at no extra cost to you.<br>
-      I only share products I genuinely recommend.
+      The Discount Club VIP — Only the best, always verified.
     </p>
   </div>
 
@@ -503,31 +503,34 @@
 
 <!-- TOAST -->
 <div class="toast" id="toast">
-  <span class="toast-dot"></span>
-  <span id="toast-text">Code copied!</span>
+  <span>✓</span>
+  <span id="toast-text">Code copied! Paste at checkout.</span>
 </div>
 
 <script>
 function copyCode(e, code) {
   e.preventDefault();
   e.stopPropagation();
-  navigator.clipboard.writeText(code).catch(() => {});
-  const btn = e.currentTarget;
-  const prev = btn.textContent;
+  navigator.clipboard.writeText(code).catch(function() {
+    var ta = document.createElement('textarea');
+    ta.value = code;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  });
+  var btn = e.currentTarget;
+  var prev = btn.textContent;
   btn.textContent = '✓ Copied!';
-  btn.classList.add('copied');
-  setTimeout(() => {
-    btn.textContent = prev;
-    btn.classList.remove('copied');
-  }, 2000);
-  showToast(`Code "${code}" copied to clipboard!`);
+  setTimeout(function() { btn.textContent = prev; }, 2200);
+  showToast('Code "' + code + '" copied! Paste at checkout 🛒');
 }
 
 function showToast(msg) {
-  const t = document.getElementById('toast');
+  var t = document.getElementById('toast');
   document.getElementById('toast-text').textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  setTimeout(function() { t.classList.remove('show'); }, 2800);
 }
 </script>
 
