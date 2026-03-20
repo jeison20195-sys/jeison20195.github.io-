@@ -8,122 +8,101 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f; --surface: #13131a; --surface2: #1c1c27;
-    --border: rgba(255,255,255,0.07); --text: #f0eff5; --muted: #7a798a;
-    --gold: #f0c040; --gold2: #e6a800; --accent2: #7f77dd;
-    --accent3: #1d9e75; --accent1: #ff6b35; --pink: #e0609a; --blue: #388bdb;
+    --bg:#0a0a0f;--surface:#13131a;--surface2:#1c1c27;
+    --border:rgba(255,255,255,0.07);--text:#f0eff5;--muted:#7a798a;
+    --gold:#f0c040;--gold2:#e6a800;--v2:#7f77dd;--v3:#1d9e75;
+    --v1:#ff6b35;--pink:#e0609a;--blue:#388bdb;--pur2:#a064ff;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-  body::before {
-    content: ''; position: fixed; inset: 0;
-    background: radial-gradient(ellipse 700px 400px at 15% 5%, rgba(127,119,221,0.12), transparent 70%),
-                radial-gradient(ellipse 600px 500px at 90% 85%, rgba(240,192,64,0.12), transparent 70%);
-    pointer-events: none; z-index: 0;
-  }
-  .noise {
-    position: fixed; inset: 0; opacity: 0.025; pointer-events: none; z-index: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 200px;
-  }
-  .container { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; padding: 48px 20px 80px; }
-
-  /* HEADER */
-  .header { text-align: center; margin-bottom: 44px; animation: fadeUp 0.6s ease both; }
-  .avatar-wrap { position: relative; display: inline-block; margin-bottom: 18px; }
-  .avatar { width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg, #1a1a2e, #2d2b55); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; flex-direction: column; gap: 1px; }
-  .avatar-crown { font-size: 18px; line-height: 1; }
-  .avatar-letters { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: var(--gold); letter-spacing: 0.04em; }
-  .avatar-ring { position: absolute; inset: -4px; border-radius: 50%; background: conic-gradient(var(--gold), var(--accent2), var(--gold2), var(--accent2), var(--gold)); animation: spin 5s linear infinite; z-index: 0; }
-  .avatar-ring::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--bg); }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .vip-label { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(90deg, rgba(240,192,64,0.15), rgba(230,168,0,0.08)); border: 1px solid rgba(240,192,64,0.3); border-radius: 99px; padding: 4px 14px; font-size: 11px; font-weight: 700; font-family: 'Syne', sans-serif; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-  .brand-name { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; line-height: 1.2; }
-  .brand-name .vip { background: linear-gradient(90deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .bio { color: var(--muted); font-size: 13.5px; line-height: 1.65; max-width: 340px; margin: 8px auto 18px; }
-  .socials { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .social-pill { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
-  .social-pill:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-  /* SECTION */
-  .section-label { display: flex; align-items: center; gap: 10px; margin: 30px 0 12px; }
-  .section-label span { font-family: 'Syne', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-  /* CARD */
-  .card { display: flex; align-items: center; gap: 15px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; text-decoration: none; color: inherit; margin-bottom: 10px; transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1); position: relative; overflow: hidden; animation: fadeUp 0.5s ease both; }
-  .card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.25s; border-radius: inherit; }
-  .card:hover { transform: translateY(-3px) scale(1.01); border-color: rgba(255,255,255,0.13); }
-  .card:hover::before { opacity: 1; }
-  .card.gold::before   { background: radial-gradient(ellipse at left, rgba(240,192,64,0.1),  transparent 70%); }
-  .card.purple::before { background: radial-gradient(ellipse at left, rgba(127,119,221,0.1), transparent 70%); }
-  .card.orange::before { background: radial-gradient(ellipse at left, rgba(255,107,53,0.1),  transparent 70%); }
-  .card.teal::before   { background: radial-gradient(ellipse at left, rgba(29,158,117,0.1),  transparent 70%); }
-  .card.pink::before   { background: radial-gradient(ellipse at left, rgba(224,96,154,0.1),  transparent 70%); }
-  .card.blue::before   { background: radial-gradient(ellipse at left, rgba(56,139,219,0.1),  transparent 70%); }
-
-  .card-icon { width: 50px; height: 50px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; position: relative; z-index: 1; }
-  .card.gold   .card-icon { background: rgba(240,192,64,0.12); }
-  .card.purple .card-icon { background: rgba(127,119,221,0.12); }
-  .card.orange .card-icon { background: rgba(255,107,53,0.12); }
-  .card.teal   .card-icon { background: rgba(29,158,117,0.12); }
-  .card.pink   .card-icon { background: rgba(224,96,154,0.12); }
-  .card.blue   .card-icon { background: rgba(56,139,219,0.12); }
-
-  .card-body { flex: 1; min-width: 0; position: relative; z-index: 1; }
-  .card-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 3px; line-height: 1.3; }
-  .card-sub { font-size: 12px; color: var(--muted); line-height: 1.45; }
-
-  .tag { display: inline-flex; align-items: center; gap: 4px; border-radius: 6px; padding: 2px 7px; font-size: 11px; font-weight: 600; margin-top: 5px; border: 1px solid; }
-  .tag-gold   { background: rgba(240,192,64,0.1);  border-color: rgba(240,192,64,0.25);  color: var(--gold); }
-  .tag-purple { background: rgba(127,119,221,0.1); border-color: rgba(127,119,221,0.25); color: var(--accent2); }
-  .tag-orange { background: rgba(255,107,53,0.1);  border-color: rgba(255,107,53,0.25);  color: var(--accent1); }
-  .tag-teal   { background: rgba(29,158,117,0.1);  border-color: rgba(29,158,117,0.25);  color: var(--accent3); }
-  .tag-pink   { background: rgba(224,96,154,0.1);  border-color: rgba(224,96,154,0.25);  color: var(--pink); }
-  .tag-blue   { background: rgba(56,139,219,0.1);  border-color: rgba(56,139,219,0.25);  color: var(--blue); }
-
-  .perks { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
-  .perk { font-size: 10px; font-weight: 600; font-family: 'Syne', sans-serif; padding: 2px 6px; border-radius: 5px; }
-  .perk.green  { background: rgba(29,158,117,0.12); color: var(--accent3); }
-  .perk.orange { background: rgba(255,107,53,0.1);  color: var(--accent1); }
-
-  .card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; flex-shrink: 0; position: relative; z-index: 1; }
-  .code-badge { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 5px 11px; border-radius: 8px; border: 1px dashed; cursor: pointer; transition: all 0.2s; white-space: nowrap; user-select: none; }
-  .card.gold   .code-badge { border-color: var(--gold);    color: var(--gold); }
-  .card.purple .code-badge { border-color: var(--accent2); color: var(--accent2); }
-  .card.orange .code-badge { border-color: var(--accent1); color: var(--accent1); }
-  .card.teal   .code-badge { border-color: var(--accent3); color: var(--accent3); }
-  .card.pink   .code-badge { border-color: var(--pink);    color: var(--pink); }
-  .card.blue   .code-badge { border-color: var(--blue);    color: var(--blue); }
-  .code-badge:hover { opacity: 0.7; transform: scale(0.97); }
-
-  .arrow { color: var(--muted); font-size: 15px; transition: transform 0.2s, color 0.2s; }
-  .card:hover .arrow { transform: translateX(4px); color: var(--text); }
-
-  .corner-badge { position: absolute; top: -1px; right: 16px; font-size: 9.5px; font-weight: 700; font-family: 'Syne', sans-serif; letter-spacing: 0.08em; padding: 3px 9px; border-radius: 0 0 8px 8px; text-transform: uppercase; }
-  .badge-vip  { background: var(--gold);    color: #0a0a0f; }
-  .badge-hot  { background: var(--accent1); color: #fff; }
-  .badge-new  { background: var(--accent3); color: #fff; }
-  .badge-deal { background: var(--accent2); color: #fff; }
-  .badge-glow { background: var(--pink);    color: #fff; }
-
-  .coming-soon { border: 1px dashed rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.6; }
-  .coming-soon strong { display: block; font-family: 'Syne', sans-serif; font-size: 14px; color: var(--text); margin-bottom: 4px; }
-
-  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(90px); background: var(--surface2); border: 1px solid rgba(240,192,64,0.25); border-radius: 14px; padding: 11px 22px; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 9px; z-index: 100; transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-
-  .footer { text-align: center; margin-top: 48px; color: var(--muted); font-size: 12px; line-height: 1.9; }
-  .footer a { color: var(--accent2); text-decoration: none; }
-  .footer-divider { width: 40px; height: 1px; background: var(--border); margin: 16px auto; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  .card:nth-child(1){animation-delay:0.05s} .card:nth-child(2){animation-delay:0.10s}
-  .card:nth-child(3){animation-delay:0.15s} .card:nth-child(4){animation-delay:0.20s}
-  .card:nth-child(5){animation-delay:0.25s} .card:nth-child(6){animation-delay:0.30s}
-  .card:nth-child(7){animation-delay:0.35s}
-
-  @media (max-width:420px) { .brand-name{font-size:20px} .card-title{font-size:13px} .container{padding:36px 16px 64px} }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 700px 400px at 15% 5%,rgba(127,119,221,0.12),transparent 70%),radial-gradient(ellipse 600px 500px at 90% 85%,rgba(240,192,64,0.12),transparent 70%);pointer-events:none;z-index:0;}
+  .noise{position:fixed;inset:0;opacity:0.025;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
+  .container{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:48px 20px 80px;}
+  .header{text-align:center;margin-bottom:44px;animation:fadeUp 0.6s ease both;}
+  .avatar-wrap{position:relative;display:inline-block;margin-bottom:18px;}
+  .avatar{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#1a1a2e,#2d2b55);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-direction:column;gap:1px;}
+  .avatar-crown{font-size:18px;line-height:1;}
+  .avatar-letters{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--gold);letter-spacing:0.04em;}
+  .avatar-ring{position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--gold),var(--v2),var(--gold2),var(--v2),var(--gold));animation:spin 5s linear infinite;z-index:0;}
+  .avatar-ring::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--bg);}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .vip-label{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,rgba(240,192,64,0.15),rgba(230,168,0,0.08));border:1px solid rgba(240,192,64,0.3);border-radius:99px;padding:4px 14px;font-size:11px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+  .brand-name{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px;line-height:1.2;}
+  .brand-name .vip{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .bio{color:var(--muted);font-size:13.5px;line-height:1.65;max-width:340px;margin:8px auto 18px;}
+  .socials{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+  .social-pill{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:99px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:12px;font-weight:500;text-decoration:none;transition:all 0.2s;}
+  .social-pill:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+  .section-label{display:flex;align-items:center;gap:10px;margin:30px 0 12px;}
+  .section-label span{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+  .card{display:flex;align-items:center;gap:15px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:16px;text-decoration:none;color:inherit;margin-bottom:10px;transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;animation:fadeUp 0.5s ease both;}
+  .card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.25s;border-radius:inherit;}
+  .card:hover{transform:translateY(-3px) scale(1.01);border-color:rgba(255,255,255,0.13);}
+  .card:hover::before{opacity:1;}
+  .card.gold::before{background:radial-gradient(ellipse at left,rgba(240,192,64,0.1),transparent 70%);}
+  .card.purple::before{background:radial-gradient(ellipse at left,rgba(127,119,221,0.1),transparent 70%);}
+  .card.pur2::before{background:radial-gradient(ellipse at left,rgba(160,100,255,0.1),transparent 70%);}
+  .card.orange::before{background:radial-gradient(ellipse at left,rgba(255,107,53,0.1),transparent 70%);}
+  .card.teal::before{background:radial-gradient(ellipse at left,rgba(29,158,117,0.1),transparent 70%);}
+  .card.pink::before{background:radial-gradient(ellipse at left,rgba(224,96,154,0.1),transparent 70%);}
+  .card.blue::before{background:radial-gradient(ellipse at left,rgba(56,139,219,0.1),transparent 70%);}
+  .card-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;position:relative;z-index:1;}
+  .card.gold .card-icon{background:rgba(240,192,64,0.12);}
+  .card.purple .card-icon{background:rgba(127,119,221,0.12);}
+  .card.pur2 .card-icon{background:rgba(160,100,255,0.12);}
+  .card.orange .card-icon{background:rgba(255,107,53,0.12);}
+  .card.teal .card-icon{background:rgba(29,158,117,0.12);}
+  .card.pink .card-icon{background:rgba(224,96,154,0.12);}
+  .card.blue .card-icon{background:rgba(56,139,219,0.12);}
+  .card-body{flex:1;min-width:0;position:relative;z-index:1;}
+  .card-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px;line-height:1.3;}
+  .card-sub{font-size:12px;color:var(--muted);line-height:1.45;}
+  .tag{display:inline-flex;align-items:center;gap:4px;border-radius:6px;padding:2px 7px;font-size:11px;font-weight:600;margin-top:5px;border:1px solid;}
+  .tg{background:rgba(240,192,64,0.1);border-color:rgba(240,192,64,0.25);color:var(--gold);}
+  .tv{background:rgba(127,119,221,0.1);border-color:rgba(127,119,221,0.25);color:var(--v2);}
+  .tv2{background:rgba(160,100,255,0.1);border-color:rgba(160,100,255,0.25);color:var(--pur2);}
+  .to{background:rgba(255,107,53,0.1);border-color:rgba(255,107,53,0.25);color:var(--v1);}
+  .tt{background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.25);color:var(--v3);}
+  .tp{background:rgba(224,96,154,0.1);border-color:rgba(224,96,154,0.25);color:var(--pink);}
+  .tb{background:rgba(56,139,219,0.1);border-color:rgba(56,139,219,0.25);color:var(--blue);}
+  .perks{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;}
+  .perk{font-size:10px;font-weight:600;font-family:'Syne',sans-serif;padding:2px 6px;border-radius:5px;}
+  .pg{background:rgba(29,158,117,0.12);color:var(--v3);}
+  .po{background:rgba(255,107,53,0.1);color:var(--v1);}
+  .card-right{display:flex;flex-direction:column;align-items:flex-end;gap:7px;flex-shrink:0;position:relative;z-index:1;}
+  .code-badge{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.04em;padding:5px 11px;border-radius:8px;border:1px dashed;cursor:pointer;transition:all 0.2s;white-space:nowrap;user-select:none;}
+  .card.gold .code-badge{border-color:var(--gold);color:var(--gold);}
+  .card.purple .code-badge{border-color:var(--v2);color:var(--v2);}
+  .card.pur2 .code-badge{border-color:var(--pur2);color:var(--pur2);}
+  .card.orange .code-badge{border-color:var(--v1);color:var(--v1);}
+  .card.teal .code-badge{border-color:var(--v3);color:var(--v3);}
+  .card.pink .code-badge{border-color:var(--pink);color:var(--pink);}
+  .card.blue .code-badge{border-color:var(--blue);color:var(--blue);}
+  .code-badge:hover{opacity:0.7;transform:scale(0.97);}
+  .arrow{color:var(--muted);font-size:15px;transition:transform 0.2s,color 0.2s;}
+  .card:hover .arrow{transform:translateX(4px);color:var(--text);}
+  .cb{position:absolute;top:-1px;right:16px;font-size:9.5px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:0.08em;padding:3px 9px;border-radius:0 0 8px 8px;text-transform:uppercase;}
+  .bv{background:var(--gold);color:#0a0a0f;}
+  .bh{background:var(--v1);color:#fff;}
+  .bn{background:var(--v3);color:#fff;}
+  .bd{background:var(--v2);color:#fff;}
+  .bg{background:var(--pink);color:#fff;}
+  .be{background:var(--pur2);color:#fff;}
+  .coming-soon{border:1px dashed rgba(255,255,255,0.1);border-radius:16px;padding:20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6;}
+  .coming-soon strong{display:block;font-family:'Syne',sans-serif;font-size:14px;color:var(--text);margin-bottom:4px;}
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--surface2);border:1px solid rgba(240,192,64,0.25);border-radius:14px;padding:11px 22px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:9px;z-index:100;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
+  .footer{text-align:center;margin-top:48px;color:var(--muted);font-size:12px;line-height:1.9;}
+  .footer a{color:var(--v2);text-decoration:none;}
+  .fdiv{width:40px;height:1px;background:var(--border);margin:16px auto;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .card:nth-child(1){animation-delay:0.04s}.card:nth-child(2){animation-delay:0.08s}
+  .card:nth-child(3){animation-delay:0.12s}.card:nth-child(4){animation-delay:0.16s}
+  .card:nth-child(5){animation-delay:0.20s}.card:nth-child(6){animation-delay:0.24s}
+  .card:nth-child(7){animation-delay:0.28s}.card:nth-child(8){animation-delay:0.32s}
+  .card:nth-child(9){animation-delay:0.36s}
+  @media(max-width:420px){.brand-name{font-size:20px}.card-title{font-size:13px}.container{padding:36px 16px 64px}}
 </style>
 </head>
 <body>
@@ -145,16 +124,15 @@
     </div>
   </div>
 
-  <!-- ⚡ E-BIKES -->
   <div class="section-label"><span>⚡ Electric Bikes — Tuttio Sport</span></div>
 
   <a class="card orange" href="https://tuttiosport.com/?ref=xqlmzyqa" target="_blank">
-    <div class="corner-badge badge-hot">🔥 Hot</div>
+    <div class="cb bh">🔥 Hot</div>
     <div class="card-icon">🏍️</div>
     <div class="card-body">
       <div class="card-title">Tuttio Electric Dirt Bike</div>
       <div class="card-sub">40+ MPH · Conquer any terrain · No gas · No noise</div>
-      <div class="perks"><span class="perk green">✓ Free Shipping</span><span class="perk orange">✓ $10 OFF</span></div>
+      <div class="perks"><span class="perk pg">✓ Free Shipping</span><span class="perk po">✓ $10 OFF</span></div>
     </div>
     <div class="card-right">
       <span class="code-badge" onclick="copyCode(event,'CASHBACK10')">CASHBACK10</span>
@@ -163,12 +141,12 @@
   </a>
 
   <a class="card teal" href="https://tuttiosport.com/?ref=xqlmzyqa" target="_blank">
-    <div class="corner-badge badge-deal">2-Yr Warranty</div>
+    <div class="cb bd">2-Yr Warranty</div>
     <div class="card-icon">🚲</div>
     <div class="card-body">
       <div class="card-title">Tuttio Sport — E-Bike Revolution</div>
       <div class="card-sub">Stop paying for gas · Fast &amp; sweat-free commute</div>
-      <div class="perks"><span class="perk green">✓ Free Shipping</span><span class="perk green">✓ No Tax*</span><span class="perk orange">✓ $10 OFF</span></div>
+      <div class="perks"><span class="perk pg">✓ Free Shipping</span><span class="perk pg">✓ No Tax*</span><span class="perk po">✓ $10 OFF</span></div>
     </div>
     <div class="card-right">
       <span class="code-badge" onclick="copyCode(event,'CASHBACK10')">CASHBACK10</span>
@@ -176,16 +154,15 @@
     </div>
   </a>
 
-  <!-- 🌿 SUPPLEMENTS -->
   <div class="section-label"><span>🌿 Health &amp; Supplements — Micro Ingredients</span></div>
 
   <a class="card gold" href="https://www.microingredients.com/?sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
-    <div class="corner-badge badge-vip">👑 VIP Deal</div>
+    <div class="cb bv">👑 VIP Deal</div>
     <div class="card-icon">🌿</div>
     <div class="card-body">
       <div class="card-title">Micro Ingredients — Full Store</div>
       <div class="card-sub">Premium supplements · All products included</div>
-      <div class="tag tag-gold">💰 15% OFF everything</div>
+      <div class="tag tg">💰 15% OFF everything</div>
     </div>
     <div class="card-right">
       <span class="code-badge" onclick="copyCode(event,'NATURE15%')">NATURE15%</span>
@@ -197,8 +174,8 @@
     <div class="card-icon">☀️</div>
     <div class="card-body">
       <div class="card-title">Vitamin D3 + K2 Softgels</div>
-      <div class="card-sub">Coconut oil formula · Immune &amp; bone support · High potency</div>
-      <div class="tag tag-blue">💊 15% OFF · Stock up &amp; save</div>
+      <div class="card-sub">Coconut oil formula · Immune &amp; bone support</div>
+      <div class="tag tb">💊 15% OFF · High potency</div>
     </div>
     <div class="card-right">
       <span class="code-badge" onclick="copyCode(event,'NATURE15%')">NATURE15%</span>
@@ -206,13 +183,13 @@
     </div>
   </a>
 
-  <a class="card pink" href="https://www.microingredients.com/products/micro-ingredients-organic-collagen-peptides-powder-8oz?_pos=1&_sid=6f1f98a16&_ss=r&sca_ref=10058011.9F8UQLGv0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
-    <div class="corner-badge badge-glow">✨ Glow Up</div>
+  <a class="card pink" href="https://www.microingredients.com/products/micro-ingredients-organic-collagen-peptides-powder-8oz?_pos=1&_sid=6f1f98a16&_ss=r&sca_ref=10058011.9F8UQL6v0yw1&utm_source=uppromote&utm_medium=240654&utm_campaign=10058011" target="_blank">
+    <div class="cb bg">✨ Glow Up</div>
     <div class="card-icon">💅</div>
     <div class="card-body">
       <div class="card-title">Multi Collagen Peptides</div>
-      <div class="card-sub">Hair, skin, nails &amp; joints · Dissolves in coffee or smoothies</div>
-      <div class="tag tag-pink">✨ 15% OFF · Radiant skin</div>
+      <div class="card-sub">Hair, skin, nails &amp; joints · Dissolves in coffee</div>
+      <div class="tag tp">✨ 15% OFF · Radiant skin</div>
     </div>
     <div class="card-right">
       <span class="code-badge" onclick="copyCode(event,'NATURE15%')">NATURE15%</span>
@@ -220,16 +197,15 @@
     </div>
   </a>
 
-  <!-- 🎮 TECH -->
   <div class="section-label"><span>🎮 Tech &amp; Gaming — MelGeek</span></div>
 
   <a class="card purple" href="https://www.melgeek.com/products/real67-magnetic-keyboard?ref=gfub8jt0" target="_blank">
-    <div class="corner-badge badge-new">New</div>
+    <div class="cb bn">New</div>
     <div class="card-icon">⌨️</div>
     <div class="card-body">
       <div class="card-title">MelGeek REAL67/81 Keyboard</div>
-      <div class="card-sub">Magnetic switches · Premium gaming &amp; productivity</div>
-      <div class="tag tag-purple">💜 5% OFF</div>
+      <div class="card-sub">Magnetic switches · Gaming &amp; productivity</div>
+      <div class="tag tv">💜 5% OFF</div>
     </div>
     <div class="card-right">
       <span class="code-badge" onclick="copyCode(event,'08OFF')">08OFF</span>
@@ -237,7 +213,33 @@
     </div>
   </a>
 
-  <!-- COMING SOON -->
+  <a class="card pur2" href="https://www.melgeek.com/products/melgeek-made68-ultra-hall-effect-keyboard?ref=gfub8jt0" target="_blank">
+    <div class="cb be">🎯 Esports</div>
+    <div class="card-icon">🕹️</div>
+    <div class="card-body">
+      <div class="card-title">MelGeek MADE68 Ultra+</div>
+      <div class="card-sub">0.01mm Rapid Trigger · Built for Valorant &amp; CS2</div>
+      <div class="tag tv2">⚡ 5% OFF · Pro accuracy</div>
+    </div>
+    <div class="card-right">
+      <span class="code-badge" onclick="copyCode(event,'08OFF')">08OFF</span>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+
+  <a class="card teal" href="https://www.melgeek.com/collections/accessory?ref=gfub8jt0" target="_blank">
+    <div class="card-icon">🖱️</div>
+    <div class="card-body">
+      <div class="card-title">MelGeek Accessories</div>
+      <div class="card-sub">Keycaps, coiled cables &amp; wrist rests · Complete your setup</div>
+      <div class="tag tt">🎨 5% OFF · Full collection</div>
+    </div>
+    <div class="card-right">
+      <span class="code-badge" onclick="copyCode(event,'08OFF')">08OFF</span>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+
   <div class="section-label"><span>⚡ More Deals Coming</span></div>
   <div class="coming-soon">
     <strong>New exclusive codes dropping soon 🔥</strong>
@@ -245,14 +247,14 @@
   </div>
 
   <div class="footer">
-    <div class="footer-divider"></div>
+    <div class="fdiv"></div>
     <p>👆 Tap any code to copy · Paste at checkout to save</p>
     <p style="margin-top:6px;"><a href="https://t.me/clubvipdescuentos" target="_blank">📢 Join Telegram for early access to new deals</a></p>
     <p style="margin-top:12px;font-size:11px;opacity:0.55;">Affiliate links — I earn a small commission at no extra cost to you.<br>The Discount Club VIP — Only the best, always verified.</p>
   </div>
 </div>
 
-<div class="toast" id="toast"><span>✓</span><span id="toast-text">Code copied! Paste at checkout.</span></div>
+<div class="toast" id="toast"><span>✓</span><span id="toast-text">Code copied!</span></div>
 
 <script>
 function copyCode(e,code){
